@@ -1,19 +1,77 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+<html>
+    
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Sarr Alassane">
+        <meta name="description" content="Site Kem Eat">
+        
+        
+        <title>KEM'EAT - {% block title %}base{% endblock %}</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+        <link rel="stylesheet" href="../public/css/style.css">
+        
+
+     
+        {% block stylesheets %}{% endblock %}
+                  
+       
     </head>
+
+
     <body>
+        
+        
+
         {% block body %}{% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js
+        "></script>
+
+        {% block javascripts %} {% endblock %}
+
+        <header>
+
+            
+        </header>
+
+        <footer class="container-fluid">
+            <div class='row text-center p-5'>
+                <div class="col-4">
+                    <h5>Liens</h5>
+                        <div class="dropdown-divider"></div>
+                        <p><a href="#">Accueil</a></p>
+                        <p><a href="#">Restaurants</a></p>
+                        <p><a href="#">Nos plats</a></p>
+                        <p><a href="#">Contact</a></p>
+                </div>
+                
+                <div class="col-4 my-auto">
+                     <img src="{{ asset('img/logo.png') }}" width= 200>
+                </div>
+                
+                <div class="col-4" "my-5" >
+                    <h5>Réseaux</h5>
+                    <div class="dropdown-divider"></div>
+                    <p><i class="fab fa-facebook"></i>Facebook</p>
+                    <p><i class="fab fa-snapchat"></i>Snap</p>
+                    <p><i class="fab fa-instagram"></i>Insta</p>
+                    <p><i class="fab fa-twitter"></i>Twitter</p>
+                </div>
+                
+            </div>
+
+
+
+
+        </footer>
     </body>
+
+
 </html>

@@ -1,0 +1,36 @@
+/* ********************* RESET ******************** */
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+/* ********************** ACCUEIL ****************** */
+
+
+
+
+
+#accueil-header #header-img {
+    width: 100vw;
+    height: 80vh;
+    background-image: url('../img/plat.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#accueil-header h1,
+#accueil-header h2 {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#accueil-header h2 {
+    top: 70%;
+}
