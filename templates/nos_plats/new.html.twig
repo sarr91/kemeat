@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New NosPlats{% endblock %}
+
+{% block body %}
+    <h1>Create new NosPlats</h1>
+
+    {{ include('nos_plats/_form.html.twig') }}
+
+    <a href="{{ path('nos_plats_index') }}">back to list</a>
+{% endblock %}

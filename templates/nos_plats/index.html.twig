@@ -27,17 +27,17 @@
                 <td>{{ nos_plat.date ? nos_plat.date|date('Y-m-d') : '' }}</td>
                 <td>{{ nos_plat.img }}</td>
                 <td>
-                    <a href="{{ path('admin_nos_plats_show', {'id': nos_plat.id}) }}">show</a>
-                    <a href="{{ path('admin_nos_plats_edit', {'id': nos_plat.id}) }}">edit</a>
+                    <a href="{{ path('nos_plats_show', {'id': nos_plat.id}) }}">show</a>
+                    <a href="{{ path('nos_plats_edit', {'id': nos_plat.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7"></td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_nos_plats_new') }}">Create new</a>
+    <a href="{{ path('nos_plats_new') }}">Create new</a>
 {% endblock %}
