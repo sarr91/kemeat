@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +45,16 @@ class Commande
      * @ORM\JoinColumn(nullable=false)
      */
     private $panier;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeDetail::class, mappedBy="commande")
+     */
+    private $commandeDetails;
+
+    public function __construct()
+    {
+        $this->commandeDetails = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +117,36 @@ class Commande
     public function setPanier(Panier $panier): self
     {
         $this->panier = $panier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeDetail[]
+     */
+    public function getCommandeDetails(): Collection
+    {
+        return $this->commandeDetails;
+    }
+
+    public function addCommandeDetail(CommandeDetail $commandeDetail): self
+    {
+        if (!$this->commandeDetails->contains($commandeDetail)) {
+            $this->commandeDetails[] = $commandeDetail;
+            $commandeDetail->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeDetail(CommandeDetail $commandeDetail): self
+    {
+        if ($this->commandeDetails->removeElement($commandeDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeDetail->getCommande() === $this) {
+                $commandeDetail->setCommande(null);
+            }
+        }
 
         return $this;
     }

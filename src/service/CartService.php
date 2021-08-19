@@ -17,20 +17,26 @@ class CartService
     }
 
     // je crée mes fonctionnalités pour récupéré un panier
-    public function get()
+    public function get(): array
     {
-        return $this->sessionInterface->get('cart', [
+        $cart =  $this->sessionInterface->get('cart');
+        if ($cart === null)
+        {
+            $cart = [
             'elements' => [],
             'total' => 0.0
-        ]);
+        ];
     }
+    return $cart;
 
+}
     // fonctionalité pour ajouter de plats
     public function add(NosPlats $nosPlats)
     {
 
         
         $cart = $this->get();
+        
         $nosPlatsId = $nosPlats->getId();
 
         if (!isset($cart['elements'][$nosPlatsId]))

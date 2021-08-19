@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\NosPlats;
 use App\service\CartService;
+use App\service\PaymentService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,5 +53,17 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_index');
     }
 
+
+    /**
+     * @Route("/cart/valider", name="cart_valider")
+     */
+    public function validate(PaymentService $paymentService): Response
+    {
+        $stripeSessionId = $paymentService->create();
+
+        return $this->render('cart/redirect.html.twig', [
+            'stripeSessionId' => $stripeSessionId
+        ]);
+    }
 
 }

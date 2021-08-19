@@ -47,7 +47,7 @@ class NosPlatsController extends AbstractController
         }
 
         return $this->renderForm('nos_plats/new.html.twig', [
-            'nos_plat' => $nosPlat,
+            'nos_plats' => $nosPlat,
             'form' => $form,
         ]);
     }
@@ -58,7 +58,7 @@ class NosPlatsController extends AbstractController
     public function show(NosPlats $nosPlat): Response
     {
         return $this->render('nos_plats/show.html.twig', [
-            'nos_plat' => $nosPlat,
+            'nos_plats' => $nosPlat,
         ]);
     }
 
@@ -77,7 +77,7 @@ class NosPlatsController extends AbstractController
         }
 
         return $this->renderForm('nos_plats/edit.html.twig', [
-            'nos_plat' => $nosPlat,
+            'nos_plats' => $nosPlat,
             'form' => $form,
         ]);
     }
