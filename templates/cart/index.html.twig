@@ -19,13 +19,13 @@
 
     {% for element in cart.elements %}
         <tr>
-            <td>{{ element.nosPlats.name}}</td>
-            <td>{{ element.nosPlats.price}}</td>
-            <td>{{ element.quantité}}</td>
+            <td>{{ element.nosPlats.name }}</td>
+            <td>{{ element.nosPlats.price }}</td>
+            <td>{{ element.quantity }}</td>
             <td>
-                <a href="{{ path('admin_nosPlats_add', {'id': element.nosPlats.id}) }}">+</a>
-                <a href="{{ path('admin_nosPlats_remove', {'id': element.nosPlats.id}) }}">-</a>
-                <a href="{{ path('admin_nosPlats_clear', {'id': element.nosPlats.id}) }}">-</a>
+                <a href="{{ path('cart_add', {'id': element.nosPlats.id}) }}">+</a>
+                <a href="{{ path('cart_remove', {'id': element.nosPlats.id}) }}">-</a>
+                <a href="{{ path('cart_clear', {'id': element.nosPlats.id}) }}">-</a>
             </td>          
         </tr>
     {% else %}

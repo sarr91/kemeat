@@ -38,18 +38,18 @@ class CartController extends AbstractController
     public function remove(NosPlats $nosPlats, CartService $cartService): Response
     {
 
-        $cart = $cartService->remove($nosPlats);
-        return $this->redirectToRoute('cart/index');
+        $cartService->remove($nosPlats);
+        return $this->redirectToRoute('cart_index');
     }
 
     /**
      * @Route("/cart/clear", name="cart_clear")
      */
-    public function clear(NosPlats $nosPlats, CartService $cartService): Response
+    public function clear(CartService $cartService): Response
     {
 
-        $cart = $cartService->clear();
-        return $this->redirectToRoute('cart/index');
+        $cartService->clear();
+        return $this->redirectToRoute('cart_index');
     }
 
 

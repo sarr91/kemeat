@@ -2,11 +2,12 @@
 
 namespace App\service;
 
+use App\Entity\NosPlats;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService
 {
-    // je crée une propriété
+    // je crée une propriété 
     private $sessionInterface;
 
     // je crée une injection de dépendance avec construct pour la sessionInterface
@@ -15,7 +16,7 @@ class CartService
         $this->sessionInterface = $sessionInterface;
     }
 
-    // je crée mes fonctionnalités
+    // je crée mes fonctionnalités pour récupéré un panier
     public function get()
     {
         return $this->sessionInterface->get('cart', [
@@ -24,7 +25,7 @@ class CartService
         ]);
     }
 
-    // fonctionalité pour ajouter des plats
+    // fonctionalité pour ajouter de plats
     public function add(NosPlats $nosPlats)
     {
 
@@ -48,7 +49,7 @@ class CartService
         $this->sessionInterface->set('cart', $cart);
     }
 
-    public function remove(NosPlats $nosPlats)
+    public function remove(NosPlats $nosPlats): void
     {
         $cart = $this->get();
         $nosPlatsId = $nosPlats->getId();
@@ -58,8 +59,8 @@ class CartService
             return;
         }
 
-        $cart['total'] = $cart['total'] - $PlatsPanier->getPrice();
-        $cart['elements'][$nosPlatsId]['quantity'] = $cart['elements'][$nosPlatsId]['quantité'] - 1;
+        $cart['total'] = $cart['total'] - $nosPlats->getPrice();
+        $cart['elements'][$nosPlatsId]['quantity'] = $cart['elements'][$nosPlatsId]['quantity'] - 1;
 
         if ($cart['elements'][$nosPlatsId]['quantity'] <= 0)
         {
@@ -71,6 +72,6 @@ class CartService
 
     public function clear()
     {
-        $this->sessionInterface->remove('cart');
+        $this->sessionInterface->clear('cart');
     }
 }
